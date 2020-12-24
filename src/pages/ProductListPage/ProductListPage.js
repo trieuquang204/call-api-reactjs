@@ -5,6 +5,7 @@ import axios from "axios";
 import callApi from '../../utils/apiCaller';
 
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 class ProductListPage extends Component {
   constructor(props) {
@@ -48,7 +49,7 @@ class ProductListPage extends Component {
 
     return (
       <div className="col-md-12">
-        <button className="btn btn-info mt-3 mb-3">Them san pham</button>
+        <Link to="/product/add" className="btn btn-info mt-3 mb-3">Them san pham</Link>
         <ProductList>{this.showProducts(products)}</ProductList>
       </div>
     );
