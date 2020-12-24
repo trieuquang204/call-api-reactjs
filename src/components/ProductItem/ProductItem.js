@@ -4,7 +4,7 @@ class ProductItem extends Component {
   render() {
     var { product, index } = this.props;
     var statusName = product.status ? "Con hang" : "het hang";
-    var statusClass = product.status ? "warning" : "default";
+    var statusClass = product.status ? "warning" : "success";
     return (
       <tr>
         <td>{index + 1}</td>
