@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import callApi from '../../utils/apiCaller';
+import { Link } from "react-router-dom";
+import callApi from "../../utils/apiCaller";
 
 class ProductActionPage extends Component {
   constructor(props) {
@@ -16,24 +17,24 @@ class ProductActionPage extends Component {
   onChange = (event) => {
     var target = event.target;
     var name = target.name;
-    var value = target.type === 'checkbox' ? target.checked : target.value;
+    var value = target.type === "checkbox" ? target.checked : target.value;
     this.setState({
-      [name] : value
-    })
-  }
+      [name]: value,
+    });
+  };
 
   onSave = (e) => {
     e.preventDefault();
     var { txtName, txtPrice, checkStatus } = this.state;
-    callApi('products', 'POST', {
-      name: txtName, 
+    var { history } = this.props;
+    callApi("products", "POST", {
+      name: txtName,
       price: txtPrice,
-      status: checkStatus
-    }).then(res => {
-      console.log(res);
-    })
-  }
-
+      status: checkStatus,
+    }).then((res) => {
+      history.goBack();
+    });
+  };
 
   render() {
     var { txtName, txtPrice, checkStatus } = this.state;
@@ -74,6 +75,7 @@ class ProductActionPage extends Component {
               Con hang
             </label>
           </div>
+          <Link className="btn btn-success m-2" to="/product-list">Tro lai</Link>
           <button type="submit" className="btn btn-primary">
             Luu lai
           </button>
