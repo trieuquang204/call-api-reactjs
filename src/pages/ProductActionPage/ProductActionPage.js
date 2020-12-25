@@ -14,6 +14,22 @@ class ProductActionPage extends Component {
     };
   }
 
+  componentDidMount() {
+    var { match } = this.props;
+    if (match) {
+      var id = match.params.id;
+      callApi(`products/${id}`, 'GET', null).then(res => {
+        var data = res.data;
+        this.setState({
+          id: data.id,
+          txtName: data.name,
+          txtPrice : data.price,
+          checkStatus: data.status
+        })
+      })
+    }
+  }
+
   onChange = (event) => {
     var target = event.target;
     var name = target.name;
@@ -71,11 +87,14 @@ class ProductActionPage extends Component {
                 name="checkStatus"
                 value={checkStatus}
                 onChange={this.onChange}
+                checked={checkStatus}
               />
               Con hang
             </label>
           </div>
-          <Link className="btn btn-success m-2" to="/product-list">Tro lai</Link>
+          <Link className="btn btn-success m-2" to="/product-list">
+            Tro lai
+          </Link>
           <button type="submit" className="btn btn-primary">
             Luu lai
           </button>
