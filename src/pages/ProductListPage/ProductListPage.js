@@ -6,6 +6,7 @@ import callApi from "../../utils/apiCaller";
 
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { actFetchProducts, actFetchProductsRequest } from "../../actions/index";
 
 class ProductListPage extends Component {
   constructor(props) {
@@ -16,11 +17,7 @@ class ProductListPage extends Component {
   }
 
   componentDidMount() {
-    callApi("products", "GET", null).then((res) => {
-      this.setState({
-        products: res.data,
-      });
-    });
+    this.props.fetchAllProducts();
   }
 
   showProducts(products) {
@@ -66,8 +63,7 @@ class ProductListPage extends Component {
   };
 
   render() {
-    // var {products} = this.props;
-    var products = this.state.products;
+    var { products } = this.props;
     axios({
       method: "GET",
       url: "http://localhost:3000/products",
@@ -96,4 +92,12 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, null)(ProductListPage);
+const mapDispatchToProps = (dispatch, props) => {
+  return {
+    fetchAllProducts: () => {
+      dispatch(actFetchProductsRequest());
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductListPage);

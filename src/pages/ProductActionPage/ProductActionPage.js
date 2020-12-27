@@ -18,15 +18,15 @@ class ProductActionPage extends Component {
     var { match } = this.props;
     if (match) {
       var id = match.params.id;
-      callApi(`products/${id}`, 'GET', null).then(res => {
+      callApi(`products/${id}`, "GET", null).then((res) => {
         var data = res.data;
         this.setState({
           id: data.id,
           txtName: data.name,
-          txtPrice : data.price,
-          checkStatus: data.status
-        })
-      })
+          txtPrice: data.price,
+          checkStatus: data.status,
+        });
+      });
     }
   }
 
@@ -41,15 +41,25 @@ class ProductActionPage extends Component {
 
   onSave = (e) => {
     e.preventDefault();
-    var { txtName, txtPrice, checkStatus } = this.state;
+    var { id, txtName, txtPrice, checkStatus } = this.state;
     var { history } = this.props;
-    callApi("products", "POST", {
-      name: txtName,
-      price: txtPrice,
-      status: checkStatus,
-    }).then((res) => {
-      history.goBack();
-    });
+    if (id) {
+      callApi(`products/${id}`, "PUT", {
+        name: txtName,
+        price: txtPrice,
+        status: checkStatus,
+      }).then((res) => {
+        history.goBack();
+      });
+    } else {
+      callApi("products", "POST", {
+        name: txtName,
+        price: txtPrice,
+        status: checkStatus,
+      }).then((res) => {
+        history.goBack();
+      });
+    }
   };
 
   render() {
