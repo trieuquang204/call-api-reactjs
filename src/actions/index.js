@@ -8,8 +8,6 @@ export const actFetchProductsRequest = () => {
     })
   };
 };
-
-
 export const actFetchProducts = (products) => {
   return {
     type: types.FETCH_PRODUCTS,
@@ -25,10 +23,24 @@ export const actDeleteProductRequest = (id) => {
     })
   }
 }
-
 export const actDeleteProduct = (id) => {
   return {
     type: types.DELETE_PRODUCT,
     id
+  }
+}
+
+
+export const actAddProductRequest = (product) => {
+  return (dispatch) => {
+    return callApi('products', 'POST', product).then(res => {
+      dispatch(actAddProduct(res.data));
+    })
+  }
+}
+export const actAddProduct = (product) => {
+  return {
+    type: types.ADD_PRODUCT,
+    product
   }
 }
