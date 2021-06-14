@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class NotFoundPage extends Component {
   render() {
     return (
-      <div className="container">
+      <div>
         <h1>Not found</h1>
       </div>
     );

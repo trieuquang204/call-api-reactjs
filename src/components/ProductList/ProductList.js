@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import ProductItem from "../ProductItem/ProductItem";
+import ProductItem from "../ProductItem/ProductItem";
 
 class ProductList extends Component {
   render() {
@@ -20,7 +20,11 @@ class ProductList extends Component {
                 <th>Hanh dong</th>
               </tr>
             </thead>
-            <tbody>{this.props.children}</tbody>
+            <tbody>
+              <ProductItem />
+              <ProductItem />
+              <ProductItem />
+            </tbody>
           </table>
         </div>
       </div>
