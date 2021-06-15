@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
 import Menu from "./components/Menu/Menu";
-import ProductList from "./components/ProductList/ProductList";
 import routes from "./routes";
 class App extends Component {
   showContentMenus = (routes) => {

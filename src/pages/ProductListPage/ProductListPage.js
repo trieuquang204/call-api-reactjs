@@ -1,31 +1,26 @@
 import React, { Component } from "react";
+import ProductItem from "../../components/ProductItem/ProductItem";
 import ProductList from "../../components/ProductList/ProductList";
-import ProductItem from '../../components/ProductItem/ProductItem';
 
 class ProductListPage extends Component {
-  showProducts(products) {
-    var result = null;
-    if(products.length > 0) {
+  showProducts = (products) => {
+    let result = null;
+    if (products.length > 0) {
       result = products.map((product, index) => {
-        return (
-          <ProductItem
-            key={index}
-            product={product}
-            index={index}
-          />
-        )
-      })
+        return <ProductItem key={index} product={product} index={index} />;
+      });
     }
     return result;
-  }
+  };
+
   render() {
-    var products = [];
+    let products = [];
     return (
-      <div className="col-md-12">
-        <button className="btn btn-info mt-3 mb-3">Them san pham</button>
-        <ProductList>
-          { this.showProducts(products)}
-        </ProductList>
+      <div className="col-12">
+        <button type="button" className="btn btn-info mb-10">
+          Them san pam
+        </button>
+        <ProductList>{this.showProducts(products)}</ProductList>
       </div>
     );
   }
