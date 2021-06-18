@@ -11,6 +11,12 @@
       "price": "22",
       "status": "true",
       "id": 2
+    },
+    {
+      "name": "quang1",
+      "price": "33",
+      "status": true,
+      "id": 3
     }
   ]
 }

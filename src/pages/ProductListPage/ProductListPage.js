@@ -3,6 +3,7 @@ import ProductItem from "../../components/ProductItem/ProductItem";
 import ProductList from "../../components/ProductList/ProductList";
 import { connect } from "react-redux";
 import apiCaller from "../../utils/apiCller";
+import { Link } from "react-router-dom";
 
 class ProductListPage extends Component {
   constructor(props) {
@@ -34,9 +35,9 @@ class ProductListPage extends Component {
     let { products } = this.state;
     return (
       <div className="col-12">
-        <button type="button" className="btn btn-info mb-10">
+        <Link to="/product/add" className="btn btn-info mb-10">
           Them san pam
-        </button>
+        </Link>
         <ProductList>{this.showProducts(products)}</ProductList>
       </div>
     );
