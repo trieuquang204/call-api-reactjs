@@ -1,46 +1,10 @@
 {
   "products": [
     {
-      "name": "test1",
-      "price": "11",
-      "status": "false",
-      "id": 1
-    },
-    {
       "name": "test2",
-      "price": "22",
-      "status": "true",
-      "id": 2
-    },
-    {
-      "name": "quang1",
-      "price": "33",
-      "status": true,
-      "id": 3
-    },
-    {
-      "name": "ff",
-      "price": "22",
+      "price": "44",
       "status": "",
-      "id": 4
-    },
-    {
-      "name": "nokia",
-      "price": "123",
-      "status": true,
-      "id": 5
-    },
-    {
-      "name": "samsung1",
-      "price": "4",
-      "status": "",
-      "id": 6
-    },
-    {
-      "name": "nn",
-      "price": "0",
-      "status": "",
-      "id": 7
+      "id": 1
     }
   ]
 }

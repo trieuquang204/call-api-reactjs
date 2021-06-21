@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 
 class ProductItem extends Component {
+  onDelete = (id) => {
+    if (window.confirm("Ban chac chan muon xoa?")) {
+      this.props.onDelete(id);
+    }
+  };
+
   render() {
     let { product, index } = this.props;
     let statusName = product.status ? "Con hang" : "Het hang";
@@ -16,7 +22,12 @@ class ProductItem extends Component {
         </td>
         <td>
           <button className="btn btn-success">Sua</button>
-          <button className="btn btn-danger">Xoa</button>
+          <button
+            className="btn btn-danger"
+            onClick={() => this.onDelete(product.id)}
+          >
+            Xoa
+          </button>
         </td>
       </tr>
     );

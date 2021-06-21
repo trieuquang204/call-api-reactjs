@@ -25,9 +25,41 @@ class ProductListPage extends Component {
     let result = null;
     if (products.length > 0) {
       result = products.map((product, index) => {
-        return <ProductItem key={index} product={product} index={index} />;
+        return (
+          <ProductItem
+            key={index}
+            product={product}
+            index={index}
+            onDelete={this.onDelete}
+          />
+        );
       });
     }
+    return result;
+  };
+
+  onDelete = (id) => {
+    let { products } = this.state;
+    apiCaller(`products/${id}`, "DELETE", null).then((res) => {
+      if (res.status === 200) {
+        let index = this.findIndex(products, id);
+        if (index !== -1) {
+          products.splice(index, 1);
+          this.setState({
+            products: products,
+          });
+        }
+      }
+    });
+  };
+
+  findIndex = (products, id) => {
+    let result = -1;
+    products.forEach((product, index) => {
+      if (product.id === id) {
+        result = index;
+      }
+    });
     return result;
   };
 
