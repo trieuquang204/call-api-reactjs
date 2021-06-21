@@ -24,16 +24,14 @@ class ProductActionPage extends Component {
   onSave = (e) => {
     e.preventDefault();
     let { txtName, txtPrice, chkbStatus } = this.state;
+    let { history } = this.props;
     apiCaller("products", "POST", {
       name: txtName,
       price: txtPrice,
       status: chkbStatus,
     }).then((res) => {
-      console.log("res", res);
+      history.goBack();
     });
-    console.log("1", txtName);
-    console.log("2", txtPrice);
-    console.log("3", chkbStatus);
   };
 
   render() {
