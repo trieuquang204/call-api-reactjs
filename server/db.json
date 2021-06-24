@@ -1,28 +1,16 @@
 {
   "products": [
     {
-      "name": "test2",
+      "name": "test22222",
       "price": "44",
       "status": "",
       "id": 1
     },
     {
-      "name": "wef",
-      "price": "333",
-      "status": "",
+      "name": "ww111",
+      "price": "22222",
+      "status": true,
       "id": 2
-    },
-    {
-      "name": "quang",
-      "price": "22",
-      "status": true,
-      "id": 3
-    },
-    {
-      "name": "22",
-      "price": "1",
-      "status": true,
-      "id": 4
     }
   ]
 }
