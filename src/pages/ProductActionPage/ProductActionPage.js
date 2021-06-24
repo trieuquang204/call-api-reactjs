@@ -12,6 +12,22 @@ class ProductActionPage extends Component {
     };
   }
 
+  componentDidMount() {
+    let { match } = this.props;
+    if (match) {
+      let id = match.params.id;
+      apiCaller(`products/${id}`, "GET", null).then((res) => {
+        let data = res.data;
+        this.setState({
+          id: data.id,
+          txtName: data.name,
+          txtPrice: data.price,
+          chkbStatus: data.status,
+        });
+      });
+    }
+  }
+
   onChange = (e) => {
     let target = e.target;
     let name = target.name;
@@ -69,6 +85,7 @@ class ProductActionPage extends Component {
                 name="chkbStatus"
                 value={chkbStatus}
                 onChange={this.onChange}
+                checked={chkbStatus}
               />
               Con hang
             </label>
