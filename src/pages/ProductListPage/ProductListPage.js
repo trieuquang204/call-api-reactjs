@@ -1,10 +1,10 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 import ProductItem from "../../components/ProductItem/ProductItem";
 import ProductList from "../../components/ProductList/ProductList";
-import { connect } from "react-redux";
 import apiCaller from "../../utils/apiCller";
-import { Link } from "react-router-dom";
-
+import { actFetchProductRequest } from "../../actions";
 class ProductListPage extends Component {
   constructor(props) {
     super(props);
@@ -14,11 +14,7 @@ class ProductListPage extends Component {
   }
 
   componentDidMount() {
-    apiCaller("products", "GET", null).then((res) => {
-      this.setState({
-        products: res.data,
-      });
-    });
+    this.props.fetchAllProducts();
   }
 
   showProducts = (products) => {
@@ -64,7 +60,7 @@ class ProductListPage extends Component {
   };
 
   render() {
-    let { products } = this.state;
+    let { products } = this.props;
     return (
       <div className="col-12">
         <Link to="/product/add" className="btn btn-info mb-10">
@@ -82,4 +78,12 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(ProductListPage);
+const mapDispatchToProps = (dispatch, props) => {
+  return {
+    fetchAllProducts: () => {
+      dispatch(actFetchProductRequest());
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductListPage);

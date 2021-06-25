@@ -1,26 +1,12 @@
-let initialState = [
-  {
-    id: 1,
-    name: "name1",
-    price: 400,
-    status: true,
-  },
-  {
-    id: 2,
-    name: "name2",
-    price: 300,
-    status: false,
-  },
-  {
-    id: 3,
-    name: "name3",
-    price: 600,
-    status: true,
-  },
-];
+import * as Types from "../constants/ActionTypes";
+
+let initialState = [];
 
 const products = (state = initialState, action) => {
   switch (action.type) {
+    case Types.FETCH_PRODUCTS:
+      state = action.products;
+      return [...state];
     default:
       return [...state];
   }
