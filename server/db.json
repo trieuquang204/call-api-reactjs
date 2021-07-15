@@ -1,3 +1,22 @@
 {
-  "products": []
+  "products": [
+    {
+      "id": 1,
+      "name": "san pham 1",
+      "price": "22",
+      "status": ""
+    },
+    {
+      "id": 2,
+      "name": "quang1",
+      "price": "333",
+      "status": ""
+    },
+    {
+      "id": 3,
+      "name": "rr",
+      "price": "5",
+      "status": true
+    }
+  ]
 }
