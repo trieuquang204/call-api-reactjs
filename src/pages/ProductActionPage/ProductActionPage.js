@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { Component } from "react";
-import { actAddProductRequest } from "../../actions";
+import { actAddProductRequest, actGetProductRequest } from "../../actions";
 import apiCaller from "../../utils/apiCller";
 import { connect } from "react-redux";
 
@@ -19,15 +19,7 @@ class ProductActionPage extends Component {
     let { match } = this.props;
     if (match) {
       let id = match.params.id;
-      apiCaller(`products/${id}`, "GET", null).then((res) => {
-        let data = res.data;
-        this.setState({
-          id: data.id,
-          txtName: data.name,
-          txtPrice: data.price,
-          chkbStatus: data.status,
-        });
-      });
+      this.props.onEditProduct(id);
     }
   }
 
@@ -59,13 +51,6 @@ class ProductActionPage extends Component {
         history.goBack();
       });
     } else {
-      // apiCaller("products", "POST", {
-      //   name: txtName,
-      //   price: txtPrice,
-      //   status: chkbStatus,
-      // }).then((res) => {
-      //   history.goBack();
-      // });
       this.props.onAddProduct(product);
       history.goBack();
     }
@@ -125,7 +110,10 @@ const mapDispatchToProps = (dispatch, props) => {
     onAddProduct: (product) => {
       dispatch(actAddProductRequest(product));
     },
+    onEditProduct: (id) => {
+      dispatch(actGetProductRequest(id));
+    },
   };
 };
 
-export default connect(null,mapDispatchToProps)(ProductActionPage);
+export default connect(null, mapDispatchToProps)(ProductActionPage);
