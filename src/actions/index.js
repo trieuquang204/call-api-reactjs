@@ -10,8 +10,23 @@ export const actFetchProducts = (products) => {
 
 export const actFetchProductRequest = () => {
   return (dispatch) => {
-    return apiCaller('products', 'GET', null).then(res => {
-      dispatch(actFetchProducts(res.data))
-    })
+    return apiCaller("products", "GET", null).then((res) => {
+      dispatch(actFetchProducts(res.data));
+    });
+  };
+};
+
+export const actDeleteProductRequest = (id) => {
+  return (dispatch) => {
+    return apiCaller(`products/${id}`, "DELETE", null).then((res) => {
+      dispatch(actDeleteProduct(id));
+    });
+  };
+};
+
+export const actDeleteProduct = (id) => {
+  return {
+    type: Types.DELETE_PRODUCT,
+    id,
   };
 };
